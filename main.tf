@@ -15,7 +15,7 @@ provider "aws" {
 
 resource "aws_security_group" "bia-dev" {
   name        = "bia-dev-tf"
-  description = "Regra  paa a instancia de trab bia-dev2 com tf"
+  description = "Regra  para a instancia de trab bia-dev2 com tf"
   vpc_id      = "vpc-0f920e5a0d3f0a5ca"
 
   ingress {
