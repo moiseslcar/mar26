@@ -17,3 +17,8 @@ output instance_public_ip {
     description = "IP público da EC2"
     value = aws_instance.example.public_ip
 }
+
+output "rds_endpoint" {
+    description = "Endpoint do RDS da BIA"
+    value = aws_db_instance.bia.endpoint
+}
