@@ -56,7 +56,7 @@ resource "aws_security_group" "bia-web" {
   revoke_rules_on_delete = null
   tags                   = {}
   tags_all               = {}
-  vpc_id                 = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id                 = local.vpc_id
 }
 
 resource "aws_security_group" "bia-db" {
@@ -147,7 +147,7 @@ resource "aws_security_group" "bia-db" {
   revoke_rules_on_delete = null
   tags                   = {}
   tags_all               = {}
-  vpc_id                 = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id                 = local.vpc_id
 }
 
 resource "aws_security_group" "bia-alb" {
@@ -188,7 +188,7 @@ resource "aws_security_group" "bia-alb" {
   revoke_rules_on_delete = null
   tags                   = {}
   tags_all               = {}
-  vpc_id                 = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id                 = local.vpc_id
 }
 
 resource "aws_security_group" "bia-ec2" {
@@ -219,13 +219,13 @@ resource "aws_security_group" "bia-ec2" {
   revoke_rules_on_delete = null
   tags                   = {}
   tags_all               = {}
-  vpc_id                 = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id                 = local.vpc_id
 }
 
 resource "aws_security_group" "bia-dev" {
   name        = "bia-dev"
   description = "acesso do bia-dev"
-  vpc_id      = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id      = local.vpc_id
 
   ingress {
     description = "Acesso na porta 3001"
@@ -236,9 +236,9 @@ resource "aws_security_group" "bia-dev" {
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"  # all trafic
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # all trafic
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
