@@ -12,7 +12,6 @@ resource "aws_db_instance" "bia" {
   custom_iam_instance_profile           = null
   customer_owned_ip_enabled             = false
   database_insights_mode                = "standard"
-  db_subnet_group_name                  = "default-vpc-0f920e5a0d3f0a5ca"
   dedicated_log_volume                  = false
   delete_automated_backups              = true
   deletion_protection                   = false
