@@ -26,3 +26,23 @@ resource "aws_iam_role" "role_acesso_ssm" {
   tags                  = {}
   tags_all              = {}
 }
+
+resource "aws_iam_role_policy_attachment" "ssm_core" {
+  role       = aws_iam_role.role_acesso_ssm.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_role_policy_attachment" "secrets_read" {
+  role       = aws_iam_role.role_acesso_ssm.name
+  policy_arn = "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
+}
+
+resource "aws_iam_role_policy_attachment" "rds_full" {
+  role       = aws_iam_role.role_acesso_ssm.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "ec2_full" {
+  role       = aws_iam_role.role_acesso_ssm.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}

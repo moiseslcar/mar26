@@ -1,3 +1,7 @@
+data "aws_vpc" "default" {
+  default = true
+}
+
 locals {
-    vpc_id = "vpc-0f920e5a0d3f0a5ca"
+  vpc_id = data.aws_vpc.default.id
 }
