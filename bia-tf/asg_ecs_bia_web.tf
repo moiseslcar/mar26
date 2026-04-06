@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "ecs" {
   name_prefix               = "cluster-ecs-bia-asg-"
   vpc_zone_identifier       = [local.subnet_zona_a, local.subnet_zona_b]
-  min_size                  = 0
+  min_size                  = 1
   desired_capacity          = 1
   max_size                  = 2
   health_check_grace_period = 0
@@ -11,6 +11,10 @@ resource "aws_autoscaling_group" "ecs" {
   launch_template {
     id      = aws_launch_template.ecs_ec2.id
     version = "$Latest"
+  }
+
+  lifecycle {
+    ignore_changes = [desired_capacity]
   }
 
   tag {
