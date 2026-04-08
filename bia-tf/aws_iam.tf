@@ -46,3 +46,8 @@ resource "aws_iam_role_policy_attachment" "ec2_full" {
   role       = aws_iam_role.role_acesso_ssm.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
+
+resource "aws_iam_role_policy_attachment" "ecs_acesso_ssm_policy" {
+  role       = aws_iam_role.role_acesso_ssm.name
+  policy_arn = aws_iam_policy.get_secret_bia_db.arn
+}
